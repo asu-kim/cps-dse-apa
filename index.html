@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farm Optimization</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Farm Optimization</h1>
+
+        <label for="budget">Budget ($):</label>
+        <input type="number" id="budget" required>
+
+        <label for="farm_size">Farm Size (m²):</label>
+        <input type="number" id="farm_size" required>
+
+        <label for="crop_type">Crop Type:</label>
+        <select id="crop_type">
+                <option value="Cereal">Cereal</option>
+                <option value="Tree">Tree</option>
+                <option value="Legume">Legume</option>
+                <option value="Vegetable">Vegetable</option>
+                <option value="Vine">Vine</option>
+                <option value="Forage">Forage</option>
+                <option value="Oilseed">Oilseed</option>
+                <option value="Indoor">Indoor</option>
+                <option value="Specialty">Specialty</option>
+                <option value="Fiber">Fiber</option>
+                <option value="Orchard">Orchard</option>
+                <option value="Paddy">Paddy</option>
+        </select>
+
+        <label>Applications:</label>
+        <div id="applications">
+            <label><input type="checkbox"  value="General crop monitoring">General crop monitoring</label><br>
+            <label><input type="checkbox"  value="Thermal imaging for canopy temperature">Thermal imaging for canopy temperature</label><br>
+            <label><input type="checkbox"  value="Image stitching">Image stitching</label><br>
+            <label><input type="checkbox"  value="Soil monitoring (close-up imaging)">Soil monitoring (close-up imaging)</label><br>
+            <label><input type="checkbox"  value="Yield estimation (fruit/veggie counting)">Yield estimation (fruit/veggie counting)</label><br>
+            <label><input type="checkbox"  value="Quality control & grading of harvested produce">Quality control & grading of harvested produce</label><br>
+            <label><input type="checkbox"  value="Autonomous fruit/vegetable picking">Autonomous fruit/vegetable picking</label><br>
+            <label><input type="checkbox"  value="Mechanical weeding & hoeing">Mechanical weeding & hoeing</label><br>
+            <label><input type="checkbox"  value="Soil pH sampling">Soil pH sampling</label><br>
+            <label><input type="checkbox"  value="Climate mapping (T/HR/CO₂/wind)">Climate mapping (T/HR/CO₂/wind)</label><br>
+            <label><input type="checkbox"  value="Fence/irrigation/infrastructure inspection">Fence/irrigation/infrastructure inspection</label><br>
+            <label><input type="checkbox"  value="Livestock monitoring & herding">Livestock monitoring & herding</label><br>
+            <label><input type="checkbox"  value="Beehive inspection">Beehive inspection</label><br>
+            <label><input type="checkbox"  value="Frost & pest early-warning systems">Frost & pest early-warning systems</label><br>
+            <label><input type="checkbox"  value="Fertilizing">Fertilizing</label><br>
+        </div>
+
+        <label for="eval_mode">Evaluation Mode:</label>
+<select id="eval_mode">
+    <option value="self">Evaluation of design aspects</option>
+    <option value="optimizer">Optimizer model evaluation</option>
+</select>
+
+        <button onclick="fetchOptions()">Get Options</button>
+        <button onclick="downloadJSON()">Download Results JSON</button>
+
+        <h2>Available Configurations</h2>
+        <div id="options"> <p>🔄 Waiting for configurations...</p> </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

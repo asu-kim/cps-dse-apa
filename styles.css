@@ -1,0 +1,109 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+.container {
+  width: 95%;
+  /*max-width: 900px; */
+  margin: 0 auto;
+  padding: 1rem;
+}
+h1 {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+label {
+  display: block;
+  margin-top: 1rem;
+  font-weight: bold;
+}
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 0.5rem;
+  margin-top: 0.25rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+#applications {
+  max-height: 200px;
+  overflow-y: auto;
+  border: 1px solid #ccc;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  box-sizing: border-box;
+}
+#applications label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.2rem 0;
+  font-size: 0.95rem;
+  line-height: 1.2;
+}
+#applications input[type="checkbox"] {
+  width: 1.25em;
+  height: 1.25em;
+}
+
+button {
+  margin-top: 1rem;
+  padding: 0.75rem;
+  width: 100%;
+  background: #28a745;
+  border: none;
+  color: white;
+  font-size: 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+button:hover {
+  background: #218838;
+}
+
+/* ====== Four‐column layout for results ====== */
+.results-flex {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.column {
+  flex: 1 1 20%;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 0.75rem;
+  background: #fff;
+  min-width: 0;
+}
+/* If the viewport is narrower than 1000px, allow wrapping into two columns */
+@media (max-width: 1000px) {
+  .results-flex {
+    flex-wrap: wrap;    /* Wrap into the next row */
+  }
+  .column {
+    flex: 1 1 45%;      /* Two columns per row */
+    margin-bottom: 20px;
+  }
+}
+.column h2 {
+  text-align: center;
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+.config-card {
+  border: 1px solid #eee;
+  border-radius: 4px;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+  background: #fafafa;
+}
+.config-card h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.1rem;
+}
+.config-card p {
+  margin: 0.25rem 0;
+  font-size: 0.95rem;
+}
