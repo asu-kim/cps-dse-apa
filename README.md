@@ -6,13 +6,13 @@ Please download the spreadsheet file containing data and references to build the
 
 Evaluation results of
 1) Evaluation of design aspects:
-[Case Study 1](Plots/Evaluation_of_design_aspects/Tree_500000_4047_General-crop-monitoring_Yield-estimation-(fruit-veggie-counting)/README.md)
+[Case Study 1](Plots/Evaluation_of_design_aspects/Tree_100000_4047_Autonomous-fruit-vegetable-picking/README.md)
 and
-[Case Study 2](Plots/Evaluation_of_design_aspects/Vine_10000000_40469_Autonomous-fruit-vegetable-picking/README.md)
+[Case Study 2](Plots/Evaluation_of_design_aspects/Vine_1000000_40469_General-crop-monitoring_Yield-estimation-(fruit-veggie-counting)/README.md)
 2) Optimizer model evaluation:
-[Case Study 1](Plots/Optimizer_model_evaluation/Tree_500000_4047_General-crop-monitoring_Yield-estimation-(fruit-veggie-counting)/README.md)
+[Case Study 1](Plots/Optimizer_OM_evaluation/Tree_100000_4047_Autonomous-fruit-vegetable-picking/README.md)
 and
-[Case Study 2](Plots/Optimizer_model_evaluation/Vine_10000000_40469_Autonomous-fruit-vegetable-picking/README.md)
+[Case Study 2](Plots/Optimizer_OM_evaluation/Vine_1000000_40469_General-crop-monitoring_Yield-estimation-(fruit-veggie-counting)/README.md)
 # Prerequisites 
 
 You need to **download this repository** and have **python installed**, as the main scripts are written in Python.
@@ -56,6 +56,6 @@ After getting the results on the webpage, you can verify the solver outputs:
 2. Save the file as `results.json` in the root directory of this repository.  
 3. Run the verification script: 
 ```
-python verify_ilp.py
+python SAT_solver.py
 ``` 
 4. The script will check that the configurations satisfy the budget and farm size constraints.

@@ -1225,22 +1225,22 @@ def get_possible_options(db: Session, budget: float, farm_size: float, crop_type
 
                     for comm in communications:
                         # how many comm nodes do we need to cover farm_size?
-                        hops = math.ceil(math.sqrt(farm_size) / comm.range_km)
-                        if hops < 1:
-                            hops = 1
+                        cells = math.ceil(math.sqrt(farm_size) / comm.range_km)
+                        if cells < 1:
+                            cells = 1
 
-                        total_comm_cost = comm.cost * hops
-                        total_comm_power = comm.power_watts * hops
+                        total_comm_cost = comm.cost * cells
+                        total_comm_power = comm.power_watts * cells
 
                         # keep the cheapest multi-hop option
                         if total_comm_cost < best_total_comm_cost:
                             best_total_comm_cost = total_comm_cost
-                            best = (comm, hops, total_comm_power)
+                            best = (comm, cells, total_comm_power)
 
                     if best is None:
                         continue
 
-                    comm, hops, comm_power = best
+                    comm, cells, comm_power = best
 
 
                     total_cost = body.cost + motor.cost + battery.cost + tire.cost + computing.cost + total_comm_cost
@@ -1295,22 +1295,22 @@ def get_possible_options(db: Session, budget: float, farm_size: float, crop_type
 
                 for comm in communications:
                     # how many comm nodes do we need to cover farm_size?
-                    hops = math.ceil(math.sqrt(farm_size) / comm.range_km)
-                    if hops < 1:
-                        hops = 1
+                    cells = math.ceil(math.sqrt(farm_size) / comm.range_km)
+                    if cells < 1:
+                        cells = 1
 
-                    total_comm_cost = comm.cost * hops
-                    total_comm_power = comm.power_watts * hops
+                    total_comm_cost = comm.cost * cells
+                    total_comm_power = comm.power_watts * cells
 
                     # keep the cheapest multi-hop option
                     if total_comm_cost < best_total_comm_cost:
                         best_total_comm_cost = total_comm_cost
-                        best = (comm, hops, total_comm_power)
+                        best = (comm, cells, total_comm_power)
 
                 if best is None:
                     continue
 
-                comm, hops, comm_power = best
+                comm, cells, comm_power = best
 
                 total_cost = drone_body.cost + drone_motor.cost + drone_battery.cost + computing.cost + best_total_comm_cost
                 if total_cost > budget:
