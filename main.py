@@ -543,7 +543,7 @@ def timed(label, fn, *args, **kwargs):
     print(f"{label} runtime: {elapsed} ms")
     return result, elapsed
 
-# **API Route**
+# API Route
 @app.post("/get_options")
 def get_options(request: OptimizationRequest, db: Session = Depends(get_db)):
 
@@ -828,7 +828,6 @@ def get_options(request: OptimizationRequest, db: Session = Depends(get_db)):
         })
 
     simulated_annealing_list.sort(key=lambda c: c["total_cost"])
-    #
     bayesian_list = []
     for idx, qty in bayesian:
         base_config = configs[idx]
@@ -1102,9 +1101,9 @@ def get_options(request: OptimizationRequest, db: Session = Depends(get_db)):
 
     return {
         "proposed_approach": full_objective,
-        # "area_payload": area_payload,
-        # "cost_area": cost_area,
-        # "payload_cost": payload_cost,
+         "area_payload": area_payload,
+         "cost_area": cost_area,
+         "payload_cost": payload_cost,
         "simulated_annealing": simulated_annealing,
         "bayesian": bayesian,
         "pg_dse": pg_dse,
@@ -1129,7 +1128,7 @@ def get_options(request: OptimizationRequest, db: Session = Depends(get_db)):
     }
     }
 
-# **Function to Generate Possible Configurations**
+# Function to Generate Possible Configurations
 def get_possible_options(db: Session, budget: float, farm_size: float, crop_type: str,
                          computing_mode: str, needed_comps: List[Component], edge_cost: float):
     bodies = db.query(Body).all()
@@ -1176,7 +1175,7 @@ def get_possible_options(db: Session, budget: float, farm_size: float, crop_type
         tf = compute_factor(tires.mass_kg)
         return bf * mf * tf * weight_factor * tires.wheel_radius * 10000
 
-    # **Compute Drone Payload (Uses Factor & Torque)**
+    # Compute Drone Payload
     def compute_drone_payload(drone_body, drone_motor, drone_battery, num_motors=4):
         torque = drone_motor.torque
         W_motors = torque * num_motors / 9.8
@@ -1191,7 +1190,7 @@ def get_possible_options(db: Session, budget: float, farm_size: float, crop_type
 
         return round(W_max, 2)
 
-    # **Compute Drone Coverage (Battery & Motor Factor)**
+    # Compute Drone Coverage (Battery & Motor Factor)
     def compute_drone_coverage(drone_battery, drone_motor, weight_factor):
         bf = compute_factor(drone_battery.mass_kg)
         mf = compute_factor(drone_motor.mass_kg)
@@ -1211,7 +1210,7 @@ def get_possible_options(db: Session, budget: float, farm_size: float, crop_type
     # Precompute the total extra‐components draw in watts:
     comps_draw = sum(c.power_watts for c in needed_comps)
 
-    # **Rovers**
+    # Rovers
     for body in bodies:
         for motor in motors:
             #Require motor.size exactly match body.size
@@ -1232,7 +1231,7 @@ def get_possible_options(db: Session, budget: float, farm_size: float, crop_type
                         total_comm_cost = comm.cost * cells
                         total_comm_power = comm.power_watts * cells
 
-                        # keep the cheapest multi-hop option
+                        # keep the cheapest option
                         if total_comm_cost < best_total_comm_cost:
                             best_total_comm_cost = total_comm_cost
                             best = (comm, cells, total_comm_power)
@@ -1282,7 +1281,7 @@ def get_possible_options(db: Session, budget: float, farm_size: float, crop_type
 
                     })
 
-    # **Drones**
+    # Drones
     for drone_body in drone_bodies:
         for drone_motor in drone_motors:
             # force drone_motor.size == drone_body.size
@@ -1302,7 +1301,7 @@ def get_possible_options(db: Session, budget: float, farm_size: float, crop_type
                     total_comm_cost = comm.cost * cells
                     total_comm_power = comm.power_watts * cells
 
-                    # keep the cheapest multi-hop option
+                    # keep the cheapest option
                     if total_comm_cost < best_total_comm_cost:
                         best_total_comm_cost = total_comm_cost
                         best = (comm, cells, total_comm_power)
