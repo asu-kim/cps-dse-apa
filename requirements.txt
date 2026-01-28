@@ -1,0 +1,8 @@
+fastapi
+uvicorn
+SQLAlchemy
+pydantic
+pulp
+scikit-optimize
+numpy
+python-sat
